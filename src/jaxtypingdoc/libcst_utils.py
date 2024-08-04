@@ -13,9 +13,7 @@ from libcst import (
 import libcst as cst
 
 # https://stackoverflow.com/questions/77173549/replacing-a-simplestring-inside-a-libcst-function-definition-dataclasses-froze
-# No idea why mypy doesn't seem to identify the libcst classes here as types (despite
-# libcst being installed)
-T = TypeVar("T", BaseSuite, Sequence[SimpleStatementLine | BaseCompoundStatement])  # type: ignore # noqa E501
+T = TypeVar("T", BaseSuite, Sequence[SimpleStatementLine | BaseCompoundStatement])
 S = TypeVar("S", bound=CSTNode)
 
 
