@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        python-version: ['3.9']
+        python-version: ['3.12']
 
     steps:
     - uses: actions/checkout@v4
@@ -31,4 +31,4 @@ jobs:
     - name: MyPy
       run: tox -e mypy
     - name: PyTest
-      run: tox -e py39
+      run: tox -e py312
