@@ -15,10 +15,10 @@ def _test_full_file(file_name: str, correct_file_name: str) -> None:
     assert reformat_string(correct_source) is None
 
 
-@pytest.mark.skip(reason="Test")
+@pytest.mark.skip(reason="Currently unsupported due to hard to avoid ':' in Returns")
 def test_google() -> None:
-    _test_full_file("google.py", "google_true.py")
+    _test_full_file("google_style.py", "google_style_true.py")
 
 
 def test_numpy() -> None:
-    _test_full_file("numpy.py", "numpy_true.py")
+    _test_full_file("numpy_style.py", "numpy_style_true.py")
