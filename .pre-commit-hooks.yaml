@@ -1,0 +1,8 @@
+-   id: jaxtype2doc
+    name: Add jaxtyping annotations to docstrings
+    description: This hook adds and updates matrix dimensions in docstrings based on jaxtyping annotations.
+    entry: jaxtype2doc
+    language: python
+    minimum_pre_commit_version: 2.9.2
+    require_serial: true
+    types_or: [python, pyi]
