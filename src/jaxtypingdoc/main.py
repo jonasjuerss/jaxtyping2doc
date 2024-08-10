@@ -47,6 +47,7 @@ def reformat_file(file_name: str, color_diff: bool, rewrite_file: bool) -> bool:
         if rewrite_file:
             with open(script, "w") as py_source_file:
                 py_source_file.write(modified_code)
+        return False
 
     return True
 
