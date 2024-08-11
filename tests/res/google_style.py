@@ -31,7 +31,7 @@ def basic_calc_doc(
         a: a tensor
         b: a string
     Returns:
-        sth
+        [20, 3] tensor sth
     """
     return a.sum(-1).round().int()
 

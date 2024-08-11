@@ -1,4 +1,7 @@
 import difflib
+import inspect
+import re
+from jaxtyping import _array_types
 
 
 def red(text: str) -> str:
@@ -53,7 +56,26 @@ def apply_indent(s: str, indent: int) -> str:
     return "\n".join("" if len(line) == 0 else prefix + line for line in s.split("\n"))
 
 
+# Note this may contain some invalid data types but should be sufficiently restrictive
+# for the purpose of our regex
+_jtyping_dtypes = [
+    item
+    for item in dir(_array_types)
+    if not item.startswith("_")
+    and inspect.isclass(val := getattr(_array_types, item))
+    and issubclass(val, _array_types.AbstractDtype)
+]
+# In the future we might be able to retrieve this dynamically
+_jtyping_arrtypes = ["tensor", "array", "ndarray"]
+ARRDOC_REGEX = re.compile(
+    f"\\s*\\[.*]( ({'|'.join(_jtyping_dtypes)}))?"
+    f"( ({'|'.join(_jtyping_arrtypes)}))?\\s?",
+    re.IGNORECASE,
+)
+
+
 def update_annotated_desc(cur_desc: str, annotation: str) -> str:
-    if cur_desc.startswith(annotation):
-        return cur_desc
-    return f"{annotation} {cur_desc}"
+    existing_annotation = ARRDOC_REGEX.match(cur_desc)
+    if existing_annotation is not None:
+        cur_desc = cur_desc[existing_annotation.end() :]
+    return annotation if len(cur_desc) == 0 else f"{annotation} {cur_desc}"

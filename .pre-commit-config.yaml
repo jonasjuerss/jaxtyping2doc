@@ -22,3 +22,4 @@ repos:
             - libcst==1.4.0
             - docstring_parser>=0.16
             - pytest>=6.0
+            - jaxtyping>=0.2
