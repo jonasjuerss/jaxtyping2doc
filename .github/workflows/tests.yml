@@ -33,8 +33,10 @@ jobs:
       run: tox -e black
     - name: MyPy
       run: tox -e mypy
-    - name: PyTest
-      run: tox -e py312
+    - name: PyTest # TODO remove ls
+      run: |
+        tox -e py312
+        ls
     - name: Codecov Badge
       uses: codecov/codecov-action@v4
       with:
