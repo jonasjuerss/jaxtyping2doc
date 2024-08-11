@@ -28,7 +28,7 @@ def basic_calc_doc(
     Lol
     :param a: a tensor
     :param b: a string
-    :return: sth
+    :return: [20, 3] tensor sth
     """
     return a.sum(-1).round().int()
 
