@@ -1,7 +1,10 @@
 name: Tests
 
 on:
-  - push
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   test:
@@ -32,3 +35,9 @@ jobs:
       run: tox -e mypy
     - name: PyTest
       run: tox -e py312
+    - name: Codecov Badge
+      uses: codecov/codecov-action@v4
+      with:
+        flags: unittests
+        token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true
