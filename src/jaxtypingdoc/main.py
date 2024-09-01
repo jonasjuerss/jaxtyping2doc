@@ -88,7 +88,10 @@ def main() -> None:
             f"{len(args.files)} files!"
         )
     else:
-        print(f"{fails}/{len(args.files)} files were reformatted!")
+        print(
+            f"{fails}/{len(args.files)} files "
+            f"{'were' if args.rewrite_files else 'would be'} reformatted!"
+        )
         exit(1)
 
 
