@@ -12,7 +12,7 @@ This project will not be actively maintained by me, but I am happy to review and
 ```yaml
 repos:
 -   repo: https://github.com/jonasjuerss/jaxtyping2doc
-    rev: v0.0.2  # Use the latest version here
+    rev: v0.0.3  # Use the latest version here
     hooks:
     -   id: jaxtype2doc
 ```
