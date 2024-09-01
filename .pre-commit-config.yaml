@@ -3,7 +3,6 @@ repos:
     rev: 24.3.0
     hooks:
     -   id: black
-        exclude: ^tests/res/
         args: [--safe]
 -   repo: https://github.com/PyCQA/flake8
     rev: 7.0.0

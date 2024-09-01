@@ -23,12 +23,15 @@ warn_unreachable = true
 warn_unused_configs = true
 no_implicit_reexport = true
 
-[black]
+[tool.black]
 # When changing this, also change for flake8 in setup.cfg
 line-length = 88
-exclude = '''
-__pycache__
-.git
-.tox
-venv
+force-exclude = '''
+/(
+    __pycache__|
+    .git|
+    .tox|
+    venv|
+    tests/res
+)/
 '''

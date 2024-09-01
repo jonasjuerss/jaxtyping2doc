@@ -2,6 +2,7 @@ import warnings
 from typing import TypeVar, Sequence, Optional
 
 from libcst import (
+    Attribute,
     SimpleString,
     BaseCompoundStatement,
     SimpleStatementLine,
@@ -84,7 +85,14 @@ def parse_annotation(
     arr_type_subs_el, dims_subs_el = subscr.slice
     # Instead of ignoring types we could assert hasattr(..., "value"), but that
     # wouldn't be the pythonic way
-    arr_type = arr_type_subs_el.slice.value.value  # type: ignore
+    arr_type_val = arr_type_subs_el.slice.value  # type: ignore
+    arr_type = (
+        arr_type_val.attr.value
+        if isinstance(arr_type_val, Attribute)
+        else arr_type_val.value
+    )
+    if arr_type.lower() == "ndarray":
+        arr_type = "array"
     dims = dims_subs_el.slice.value.value  # type: ignore
     return (
         f"[{dims[1:-1].strip().replace(' ', ', ')}] {dtype.lower()} {arr_type.lower()}"
