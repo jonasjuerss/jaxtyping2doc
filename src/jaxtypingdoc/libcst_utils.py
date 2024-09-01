@@ -90,7 +90,7 @@ def parse_annotation(
         arr_type_val.attr.value
         if isinstance(arr_type_val, Attribute)
         else arr_type_val.value
-    )  # type: ignore
+    )
     if arr_type.lower() == "ndarray":
         arr_type = "array"
     dims = dims_subs_el.slice.value.value  # type: ignore
