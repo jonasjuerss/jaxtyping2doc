@@ -6,7 +6,7 @@
 
 While I like the idea to annotate the dimensions of torch/jax/numpy/... arrays using [jaxtyping](https://github.com/patrick-kidger/jaxtyping), I want the dimensions to show up in my docstrings, particularly in the pop-ups generated in PyCharm/VSCode. This tool automatically adds and updates tensor dimensions in docstrings based on jaxtyping hints.
 
-This project will not be actively maintained by me, but I am happy to review and accept pull requests.
+This project will only be actively maintained by me to the degree I personally need it, but I am happy to review and accept pull requests.
 
 ## Usage as pre-commit hook
 ```yaml
